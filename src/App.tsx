@@ -1,13 +1,22 @@
 import { useRef, useState } from "react";
+import { MessagesInt } from './model';
 
 
 const App = () => {
   const inputMessage = useRef<HTMLInputElement>(null);
-  const [messData, setMessData] = useState([]);
-  
+  const [messData, setMessData] = useState<MessagesInt[]>([]);
+
   const handleSubmit = (e:any) => {
     e.preventDefault();
   
+    if (inputMessage) {
+    const mess:MessagesInt = { 
+      id: Math.round(Math.random() * Date.now()),
+      message: inputMessage.current?.value,
+      date: Date.now()
+    }
+    setMessData((prevData) => [...prevData, mess]);
+  }
 // logique d'envoie de données
     (document.getElementById("inputMessage") as HTMLInputElement).value = "";
   };
@@ -20,7 +29,7 @@ const App = () => {
         <input type="submit" />
       </form>
       <h2>Liste des messages</h2>
-      <div>{messData}</div>
+      <div>{}</div>
     </div>
   );
 };
