@@ -1,14 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 
 const App = () => {
   const inputMessage = useRef<HTMLInputElement>(null);
-
+  const [messData, setMessData] = useState([]);
+  
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    inputMessage.current.value = '';
+  
 // logique d'envoie de données
-
+    (document.getElementById("inputMessage") as HTMLInputElement).value = "";
   };
 
   return (
@@ -19,7 +20,7 @@ const App = () => {
         <input type="submit" />
       </form>
       <h2>Liste des messages</h2>
-      <div></div>
+      <div>{messData}</div>
     </div>
   );
 };
