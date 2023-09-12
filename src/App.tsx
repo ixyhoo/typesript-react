@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { MessagesInt } from './model';
+import Message from "./components/Message";
 
 
 const App: React.FC = () => {
@@ -29,7 +30,9 @@ const App: React.FC = () => {
         <input type="submit" />
       </form>
       <h2>Liste des messages</h2>
-      <div>{messData?.map((mess) => )}</div>
+      <div>{messData?.map((mess) => (
+        <Message mess={mess} messData={messData} setMessData={setMessData} key={mess.id}/>
+        ))}</div>
     </div>
   );
 };
