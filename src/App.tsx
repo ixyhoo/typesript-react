@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import { MessagesInt } from './model';
 
 
-const App = () => {
-  const inputMessage = useRef<HTMLInputElement>(null);
+const App: React.FC = () => {
+  const inputMessage = useRef<HTMLInputElement | null>(null);
   const [messData, setMessData] = useState<MessagesInt[]>([]);
 
   const handleSubmit = (e:any) => {
@@ -19,7 +19,7 @@ const App = () => {
   }
 // logique d'envoie de données
     (document.getElementById("inputMessage") as HTMLInputElement).value = "";
-  };
+  }
 
   return (
     <div>
@@ -29,7 +29,7 @@ const App = () => {
         <input type="submit" />
       </form>
       <h2>Liste des messages</h2>
-      <div>{}</div>
+      <div>{messData?.map((mess) => )}</div>
     </div>
   );
 };
